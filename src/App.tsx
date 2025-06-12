@@ -9,9 +9,12 @@ import NotFound from '@/pages/NotFound';
 const queryClient = new QueryClient();
 
 function App() {
+  // Only use basename in production (GitHub Pages)
+  const basename = import.meta.env.PROD ? '/torrentlight-hub' : '';
+  
   return (
     <QueryClientProvider client={queryClient}>
-      <Router basename="/torrentlight-hub">
+      <Router basename={basename}>
         <div className="min-h-screen bg-background text-foreground">
           <Routes>
             <Route path="/" element={<Index />} />
